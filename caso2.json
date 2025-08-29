@@ -1,0 +1,16 @@
+{
+  "mes_calculo": 1,
+  "mes_inicio": 1,
+  "salario_mensual": 5000,
+  "gratificaciones_previstas": [],
+  "pagos_extraordinarios_mes": [],
+  "retenciones_previas_acumuladas": 0,
+  "uit": 5350,
+  "tasas": [
+    {"hasta_uit": 5, "tasa": 0.08},
+    {"hasta_uit": 20, "tasa": 0.14},
+    {"hasta_uit": 35, "tasa": 0.17},
+    {"hasta_uit": 45, "tasa": 0.20},
+    {"hasta_uit": null, "tasa": 0.30}
+  ]
+}
