@@ -8,16 +8,16 @@ export function createSimulateCommand(): Command {
   const command = new Command('simulate');
   
   command
-    .description('Calculate monthly tax withholding for a Peruvian worker')
-    .option('--mes-calculo <number>', 'Calculation month (1-12)', (val) => parseInt(val))
-    .option('--mes-inicio <number>', 'Start month (1-12)', (val) => parseInt(val))
-    .option('--salario <number>', 'Monthly salary in soles', (val) => parseFloat(val))
-    .option('--gratificaciones <json>', 'Bonuses as JSON array', (val) => JSON.parse(val))
-    .option('--ret-previas <number>', 'Previous accumulated withholdings', (val) => parseFloat(val))
-    .option('--extra-mes <json>', 'Extraordinary payments as JSON array', (val) => JSON.parse(val))
-    .option('--uit <number>', 'UIT value (default: 5350)', (val) => parseFloat(val))
-    .option('--export-csv <path>', 'Export results to CSV file')
-    .option('--json', 'Output in JSON format')
+    .description('Calcular retención mensual del impuesto a la renta de quinta categoría')
+    .option('--mes-calculo <number>', 'Mes de cálculo (1-12)', (val) => parseInt(val))
+    .option('--mes-inicio <number>', 'Mes de inicio del trabajo (1-12)', (val) => parseInt(val))
+    .option('--salario <number>', 'Salario mensual en soles', (val) => parseFloat(val))
+    .option('--gratificaciones <json>', 'Gratificaciones como array JSON', (val) => JSON.parse(val))
+    .option('--ret-previas <number>', 'Retenciones previas acumuladas', (val) => parseFloat(val))
+    .option('--extra-mes <json>', 'Pagos extraordinarios como array JSON', (val) => JSON.parse(val))
+    .option('--uit <number>', 'Valor UIT (por defecto: 5350)', (val) => parseFloat(val))
+    .option('--export-csv <path>', 'Exportar resultados a archivo CSV')
+    .option('--json', 'Mostrar salida en formato JSON')
     .action(async (options) => {
       try {
         const defaultTaxBrackets: TaxBracket[] = [
@@ -59,7 +59,7 @@ export function createSimulateCommand(): Command {
 
         if (options.exportCsv) {
           await CSVExporter.exportToCSV(result, options.exportCsv);
-          console.log(`\nResults exported to: ${options.exportCsv}`);
+          console.log(`\nResultados exportados a: ${options.exportCsv}`);
         }
 
       } catch (error) {

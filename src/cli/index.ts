@@ -8,7 +8,7 @@ const program = new Command();
 
 program
   .name('perutax')
-  .description('Peruvian 5th Category Tax Withholding Calculator following SUNAT procedures')
+  .description('Calculadora de Retenciones de Quinta Categoría siguiendo procedimientos SUNAT')
   .version('1.0.0');
 
 program.addCommand(createSimulateCommand());

@@ -12,9 +12,9 @@ export function createExplainCommand(): Command {
   const command = new Command('explain');
   
   command
-    .description('Explain tax calculation with detailed SUNAT procedure breakdown')
-    .option('--input <path>', 'JSON input file path')
-    .option('--export-csv <path>', 'Export results to CSV file')
+    .description('Explicar cálculo tributario con procedimiento SUNAT detallado paso a paso')
+    .option('--input <path>', 'Ruta del archivo JSON de entrada')
+    .option('--export-csv <path>', 'Exportar resultados a archivo CSV')
     .action(async (options) => {
       try {
         let input: CalculationInput;
@@ -23,7 +23,7 @@ export function createExplainCommand(): Command {
           const inputData = await fs.promises.readFile(options.input, 'utf-8');
           input = JSON.parse(inputData);
         } else {
-          throw new Error('--input parameter with JSON file path is required');
+          throw new Error('El parámetro --input con la ruta del archivo JSON es requerido');
         }
 
         InputValidator.validate(input);
@@ -79,7 +79,7 @@ export function createExplainCommand(): Command {
 
         if (options.exportCsv) {
           await CSVExporter.exportToCSV(result, options.exportCsv);
-          console.log(`\nResults exported to: ${options.exportCsv}`);
+          console.log(`\nResultados exportados a: ${options.exportCsv}`);
         }
 
       } catch (error) {
